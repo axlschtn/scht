@@ -6,7 +6,7 @@ authors = ["axelSchouten <axel.schouten@chargeguru.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10.12"
 pyspark = "^3.5.1"
 requests = "^2.31.0"
 
