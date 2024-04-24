@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  etl:
+    build:
+      dockerfile: Dockerfile
+      context: ./etl
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: ./api
+    ports:
+      - 8000:8000
