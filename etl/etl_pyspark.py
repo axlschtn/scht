@@ -1,9 +1,7 @@
 import requests
 import os
-
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
-from pyspark.sql.types import *
+from pyspark.sql.functions import mean, median, when, col, isnan, isnull
 
 URL_BASE = "https://assets-datascientest.s3.eu-west-1.amazonaws.com"
 AWS_FILES = ["gps_app.csv","gps_user.csv"]
@@ -37,13 +35,18 @@ def create_dataframe(csv_data):
     return spark.read.options(header=True, inferSchema=True, escape="\"").csv(csv_data)
 
 def rename_columns(df):
-    print(df.columns)
     for column in df.columns:
-        df.withColumn(column.lower().replace(' ','_'), column)
+        df = df.withColumnRenamed(column, column.lower().replace(' ', '_'))
     return df
 
 app_df, user_df = [ rename_columns(create_dataframe(f"data/{file}")) for file in AWS_FILES ]
 
-print(app_df.printSchema())
-print(user_df.printSchema())
+# app_df.printSchema()
+# user_df.printSchema()
 
+'''
+    Q.3.1 Remplacer les valeurs manquantes dans la colonne rating par la moyenne ou la médiane. Justifier le choix.
+'''
+# app_nan_null = app_df.withColumn("null", when(app_df.rating.isNotNull(), 1).otherwise(app_df.rating))
+# print(app_nan_null.count())
+# app_nan_null.show()
