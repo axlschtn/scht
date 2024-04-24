@@ -1,20 +1,8 @@
-FROM python:3.12-slim
-
-ENV POETRY_NO_INTERACTION=1 \
-    POETRY_VIRTUALENVS_IN_PROJECT=1 \
-    POETRY_VIRTUALENVS_CREATE=1 \
-    POETRY_CACHE_DIR=/tmp/poetry_cache
-
-WORKDIR /api/
-
-RUN \
-    pip install poetry && \
-    touch README.md
-
-COPY ./api /api
-
-RUN chmod +x start.sh
-
-RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
-
-CMD ["./start.sh"]
+FROM python:3.12 as python-base
+WORKDIR  /app
+COPY /pyproject.toml /app
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install 
+COPY src /app
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8000"]
