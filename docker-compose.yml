@@ -1,14 +1,9 @@
-version: '3.1'
+version: '3.9'
 
 services:
-  etl:
-    build:
-      dockerfile: Dockerfile
-      context: ./etl
-
   api:
     build:
       dockerfile: Dockerfile
-      context: ./api
+      context: ./backend
     ports:
       - 8000:8000
