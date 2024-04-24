@@ -13,6 +13,6 @@ COPY . /api/
 
 RUN touch README.md
 
-RUN poetry install && rm -rf $POETRY_CACHE_DIR
+RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
 
 CMD ["poetry", "run", "uvicorn", "src.main:app", "--host=0.0.0.0", "--port=8000"]
