@@ -13,3 +13,7 @@ async def test():
 @app.get('/axel')
 async def test():
     return "axel"
+
+@app.get('/abcd')
+async def test():
+    return "axel"
