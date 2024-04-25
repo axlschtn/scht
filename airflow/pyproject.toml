@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "airflow"
+version = "0.1.0"
+description = ""
+authors = ["Axel Schouten <schouten.axel@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+apache-airflow = "^2.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
