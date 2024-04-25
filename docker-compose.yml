@@ -1,9 +1,28 @@
-version: '3.9'
-
+version: "3"
 services:
   api:
     build:
       dockerfile: Dockerfile
       context: ./backend
     ports:
-      - 8000:8000
+      - "8000:8000"
+    networks:
+      - app_network
+    volumes:
+      - backend:/app
+    environment:
+      API_KEY: asdkfhkhj40s-asdfsadfsdaf
+      POSTGRES_SQL_URI: neontech@dsafkjdsa.com/supplychain?
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/src
+        - action: rebuild
+          path: ./backend
+volumes:
+  backend:
+    driver: local
+
+networks:
+  app_network:
+    driver: bridge

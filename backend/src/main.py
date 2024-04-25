@@ -17,3 +17,7 @@ async def test():
 @app.get('/abcd')
 async def test():
     return "axel"
+
+@app.get('/kk')
+async def test():
+    return { "message": "nickel", "status": 200 }
