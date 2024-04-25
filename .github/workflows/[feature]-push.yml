@@ -17,8 +17,8 @@ jobs:
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "$BRANCH"
+          destination_branch: "backend-main"
           pr_label: "Feature automated PR (backend/)"
-          pr_title: "${{ steps.branch-name.outputs.current_branch }} into $BRANCH"
+          pr_title: "${{ steps.branch-name.outputs.current_branch }} into backend-main"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_allow_empty: true
