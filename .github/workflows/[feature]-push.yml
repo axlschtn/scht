@@ -20,5 +20,5 @@ jobs:
           destination_branch: "$BRANCH"
           pr_label: "Feature automated PR (backend/)"
           pr_title: "${{ steps.branch-name.outputs.current_branch }} into $BRANCH"
-          github_token: ${{ secrets.GAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_allow_empty: true
