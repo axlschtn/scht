@@ -18,8 +18,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
             commit-message: update backend main
-            title: "${{ steps.branch-name.outputs.current_branch }} into backend-main"
-            body: Credit new contributors by updating AUTHORS
+            title: ${{ steps.branch-name.outputs.current_branch }} into backend-main
             branch: backend-main
         # uses: repo-sync/pull-request@v2
         # with:
