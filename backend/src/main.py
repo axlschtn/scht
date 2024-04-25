@@ -1,23 +1,12 @@
 from fastapi import FastAPI
+from modules.customer.router import customer_router
+from modules.users.router import user_router
 
 app = FastAPI()
+
+app.include_router(customer_router)
+app.include_router(user_router)
 
 @app.get('/')
 async def health():
     return "Super Cool"
-
-@app.get('/check')
-async def health():
-    return "Check"
-
-@app.get('/check-bis')
-async def health():
-    return "Check-bis"
-
-@app.get('/check-ter')
-async def health():
-    return "Check-ter"
-
-@app.get('/check-quter')
-async def health():
-    return "Check-quter"
