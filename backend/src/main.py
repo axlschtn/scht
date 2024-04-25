@@ -6,18 +6,18 @@ app = FastAPI()
 async def health():
     return "Super Cool"
 
-@app.get('/test')
-async def test():
-    return "TEST"
+@app.get('/check')
+async def health():
+    return "Check"
 
-@app.get('/axel')
-async def test():
-    return "axel"
+@app.get('/check-bis')
+async def health():
+    return "Check-bis"
 
-@app.get('/abcd')
-async def test():
-    return "axel"
+@app.get('/check-ter')
+async def health():
+    return "Check-ter"
 
-@app.get('/kk')
-async def test():
-    return { "message": "nickel", "status": 200 }
+@app.get('/check-quter')
+async def health():
+    return "Check-quter"

@@ -8,21 +8,15 @@ services:
       - "8000:8000"
     networks:
       - app_network
-    volumes:
-      - backend:/app
-    environment:
-      API_KEY: asdkfhkhj40s-asdfsadfsdaf
-      POSTGRES_SQL_URI: neontech@dsafkjdsa.com/supplychain?
     develop:
       watch:
-        - action: sync
+        - action: sync+restart
           path: ./backend/src
-        - action: rebuild
-          path: ./backend
+          target: /app
+
 volumes:
   backend:
     driver: local
-
 networks:
   app_network:
     driver: bridge
