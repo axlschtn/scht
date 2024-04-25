@@ -1,0 +1,24 @@
+name: Create Pull Request Feature
+on:
+  push:
+    branches:
+      - backend/*
+env:
+    BRANCH: "backend-main"
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v6
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "$BRANCH"
+          pr_label: "Feature automated PR (backend/)"
+          pr_title: "${{ steps.branch-name.outputs.current_branch }} into $BRANCH"
+          github_token: ${{ secrets.GAT }}
+          pr_allow_empty: true
