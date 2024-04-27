@@ -6,8 +6,8 @@ authors = ["Axel Schouten <schouten.axel@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-apache-airflow = "^2.9.0"
+python = ">=3.12,<3.13"
+apache-airflow = "^2.8.0"
 
 
 [build-system]
